@@ -51,14 +51,46 @@ let openStr = `We are open in ${properties.length} days: `;
 for (const day of properties) {
   openStr += `${day}, `;
 }
-console.log(openStr);
+// console.log(openStr);
 // VALU|ES|
 const values = Object.values(openingHours);
-console.log(values);
+// console.log(values);
 // ENTRIES
 const entries = Object.entries(openingHours);
-console.log(entries);
+// console.log(entries);
 // USING DESTRUCTURING, [key of Object, value of Object]
 for (const [key, { open, close }] of entries) {
-  console.log(`On ${key}, we open at ${open} and close at ${close}.`);
+  // console.log(`On ${key}, we open at ${open} and close at ${close}.`);
 }
+//MAP ITERATION
+const question = new Map([
+  ['question', 'What is the best programming language?'],
+  [1, 'C'],
+  [2, 'JAVA'],
+  [3, 'JAVASCRIPT'],
+  ['correct', 3],
+  [true, 'Correct 🎉'],
+  [false, 'Try again!'],
+]);
+
+console.log(question);
+
+console.log(Object.entries(openingHours));
+//Convert Object to Map
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap);
+
+console.log(question.get('question'));
+
+for (const [key, value] of question) {
+  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+}
+
+const answer = Number(prompt('Your answer? '));
+console.log(answer);
+
+/* question.get('correct') === answer
+  ? console.log(question.get(true))
+  : console.log(question.get(false)); */
+
+console.log(question.get(question.get('correct') === answer));
