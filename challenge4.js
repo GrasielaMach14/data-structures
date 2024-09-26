@@ -49,3 +49,51 @@ document.querySelector('button').addEventListener('click', function () {
     console.log(output);
   }
 });
+console.log('####################################################');
+//HINT 2: The solution only needs to work for a variable made out of 2 words, like a_b
+
+const dts = [
+  'underscore_case',
+  ' first_name',
+  'Some_Variable ',
+  '  calculate_AGE',
+  'delayed_departure',
+];
+
+for (let i = 0; i < dts.length; i++) {
+  if (dts[i].indexOf('ab') != -1) {
+    console.log('a_b: ' + dts[i]);
+    const [frst, scnd] = dts[i].toLowerCase().trim().split('_');
+    console.log(frst, scnd);
+
+    const output = `${frst}${scnd.replace(scnd[5], '_b')}`;
+    console.log('output: ' + output);
+  }
+}
+
+/* HINT 3: Start without worrying about the ✅. Tackle that only after you have the variable name conversion working 😉
+
+SHOULD PRODUCE THIS OUTPUT (5 separate console.log outputs)
+underscoreCase      ✅
+firstName           ✅✅
+someVariable        ✅✅✅
+calculateAge        ✅✅✅✅
+delayedDeparture    ✅✅✅✅✅ */
+
+const new_array = [
+  'underscore_case',
+  ' first_name',
+  'Some_Variable ',
+  '  calculate_AGE',
+  'delayed_departure',
+];
+console.log('####################################################');
+//Need to find the index and repeat using entries()
+for (const [i, arr] of new_array.entries()) {
+  const [first, second] = arr.toLowerCase().trim().split('_');
+  const output = `${first}${second.replace(
+    second[0],
+    second[0].toUpperCase()
+  )}`;
+  console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`);
+}
